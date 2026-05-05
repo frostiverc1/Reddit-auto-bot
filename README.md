@@ -1,55 +1,77 @@
-# Reddit Shorts Automation (Step 1 + Step 2)
+# Reddit Shorts Automation
 
-This project builds an automated pipeline to convert Reddit posts into viral YouTube Shorts scripts.
+This project builds an automated pipeline to transform publicly available Reddit content into short-form video scripts for storytelling and educational purposes.
 
 ---
 
-## 📌 What We Have Built So Far
+## 📌 Overview
 
-### Step 1: Reddit Scraper (No API Version)
-- Fetches top posts from Reddit using public JSON endpoint
-- Filters usable content
+The pipeline processes Reddit data in stages:
+
+Reddit → Script → (Future: Voice → Video → Upload)
+
+---
+
+## ⚙️ Features Implemented
+
+### Step 1: Reddit API Client
+- Fetches top posts using the Reddit API (via PRAW)
+- Processes only publicly available data
+- Filters high-quality content
 - Saves output to output/posts.json
 
 ### Step 2: AI Script Generator
-- Converts Reddit posts into short-form viral scripts
+- Converts Reddit posts into short-form scripts
 - Uses OpenAI API
 - Saves output to output/scripts.json
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 shorts-automation/
 
-- scraper.py
-- script_generator.py
-- .env
-- output/
-  - posts.json
-  - scripts.json
+- reddit_client.py  
+- script_generator.py  
+- .env  
+- output/  
+  - posts.json  
+  - scripts.json  
 
 ---
 
-## Setup
+## 🔒 Compliance & Usage
+
+- Uses the official Reddit API via PRAW  
+- Operates in read-only mode  
+- Does not post, comment, vote, or interact on Reddit  
+- Processes only publicly available content  
+- Intended for external content transformation and analysis  
+
+---
+
+## 🛠️ Setup
 
 ### 1. Install Dependencies
 
-pip install requests openai python-dotenv
+    pip install praw openai python-dotenv
 
 ### 2. Add Environment Variables
 
-Create a .env file in root:
+Create a .env file:
 
-OPENAI_API_KEY=your_api_key_here
+    OPENAI_API_KEY=your_api_key_here
+    REDDIT_CLIENT_ID=your_client_id
+    REDDIT_CLIENT_SECRET=your_client_secret
+    REDDIT_USER_AGENT=your_app_name by u/yourusername
 
 ---
 
-## How to Run
+## ▶️ How to Run
 
-### Step 1: Run Scraper
+### Step 1: Fetch Reddit Data
 
-python scraper.py
+    python reddit_client.py
 
 This will:
 - Create output folder
@@ -57,7 +79,7 @@ This will:
 
 ### Step 2: Generate Scripts
 
-python script_generator.py
+    python script_generator.py
 
 This will:
 - Read posts.json
@@ -65,49 +87,41 @@ This will:
 
 ---
 
-## Output Format
+## 📊 Output Format
 
 posts.json example:
 
-[
-  {
-    "id": "abc123",
-    "title": "...",
-    "content": "...",
-    "score": 1234,
-    "url": "..."
-  }
-]
+    [
+      {
+        "id": "abc123",
+        "title": "...",
+        "content": "...",
+        "score": 1234,
+        "url": "..."
+      }
+    ]
 
 scripts.json example:
 
-[
-  {
-    "id": "abc123",
-    "script": "Viral short-form script..."
-  }
-]
+    [
+      {
+        "id": "abc123",
+        "script": "Short-form script..."
+      }
+    ]
 
 ---
 
-## Notes
+## 🚀 Roadmap
 
-- Uses Reddit public JSON endpoint (no API needed)
-- Filters low-quality posts
-- Script quality depends on prompt tuning
-
----
-
-## Next Steps
-
-- Voice generation (TTS)
-- Video creation (FFmpeg)
-- Captions automation
+- Text-to-Speech (TTS)
+- Video generation (FFmpeg/MoviePy)
+- Caption automation
 - Telegram bot integration
-- Full pipeline automation
+- Full pipeline orchestration
 
 ---
 
-## Goal
+## 🎯 Goal
 
-Reddit → Script → Voice → Video → Upload → Telegram Control
+Automate transformation of Reddit discussions into engaging multimedia content while respecting platform guidelines.
