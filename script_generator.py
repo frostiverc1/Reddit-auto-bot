@@ -35,16 +35,23 @@ scripts = []
 
 def generate_script(content):
     prompt = f"""
-Rewrite this Reddit post into a viral YouTube Shorts script.
+Rewrite this Reddit post into a viral YouTube Shorts script for voiceover narration.
 
 Rules:
 - Max 120 words
 - Start with a strong hook
 - Use short sentences
 - Add suspense and pacing
-- Make it natural
 - No Reddit mentions
 - End with curiosity gap
+
+Audio tag rules (ElevenLabs will use these to modulate the voice — follow this format exactly):
+- Delivery modifiers go BEFORE the text they apply to: [whispers] Even the birds fell silent. / [sarcastically] Oh great, another hero.
+- Sound effects are standalone inline cues: [sighs] / [gasps] / [giggles] / [exhales]
+- Use "..." for natural hesitation or trailing off
+- Available tags: [whispers], [sarcastically], [excitedly], [nervously], [dramatically], [sighs], [gasps], [giggles], [exhales], [laughs], [clears throat]
+- Use 2-4 tags per script max — don't overload
+- Place them where a human storyteller would naturally react or shift tone
 
 Content:
 {content}
